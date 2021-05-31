@@ -10,6 +10,14 @@ const userData = {
     dataUser:{}
 }
 
+const plantsData = {
+    id:0,
+    name:"",
+    humidity:0,
+    water:false,
+    dataPlants:{}
+}
+
 
 function UserReducer(state=userData,action){
     if(action.type==="SET_USER"){
@@ -21,11 +29,20 @@ function UserReducer(state=userData,action){
     return state;
 }
 
+function PlantsReducer(state=plantsData,action){
+    if(action.type==="SET_PLANTS"){
+        return{
+            ...state,
+            [action.inputType]:action.inputValue
+        }
+    }
+    return state;
+}
+
 
 const reducer = combineReducers({
-    
     UserReducer,
-    
+    PlantsReducer
 })
 
 export default reducer

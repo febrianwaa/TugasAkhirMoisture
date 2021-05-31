@@ -8,6 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Home from './src/Page/Home';
 import Register from './src/Page/Register';
 import Login from './src/Page/Login';
+import MainMenu from './src/Page/MainMenu';
 
 const Stack = createStackNavigator();
 
@@ -21,7 +22,7 @@ class App extends Component {
           <Stack.Screen name="Home" component={Home}/>
           <Stack.Screen name="Register" component={Register}/>
           <Stack.Screen name="Login" component={Login}/>
-
+          <Stack.Screen name="MainMenu" component={MainMenu}/>
           </Stack.Navigator>
           </NavigationContainer>
       </Provider>

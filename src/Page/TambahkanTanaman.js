@@ -2,20 +2,20 @@ import React, { Component } from 'react'
 import { View, Text, TextInput,StyleSheet, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { UserAction } from '../Redux/Action'
+import { PlantsAction } from '../Redux/Action'
 import axios from 'axios'
 
-class Register extends Component {
+class TambahkanTanaman extends Component {
 
     constructor(props){
         super(props)
     }
 
     handleInputData(){
-        axios.post("http://192.168.0.15:8080/user/addUser/",this.props.dataRegis)
+        axios.post("http://192.168.0.15:8080/plants/addPlants/",this.props.dataPlants)
         .then((response)=>{
             alert(JSON.stringify(response.data));
-            this.props.navigation.replace("Home")
+            this.props.navigation.replace("MainMenu")
         }).catch((err)=>{
             console.log(err)
         })
@@ -24,26 +24,21 @@ class Register extends Component {
     render() {
         return (
             <View>
-                <Text> Username </Text>
+                <Text> Name Tanaman </Text>
                 <TextInput
                     style={styles.input}
-                    placeholder="Masukan Username"
-                    onChangeText={(value)=>{this.props.UserAction("username",value)}}
+                    placeholder="Masukan Name Tanaman"
+                    onChangeText={(value)=>{this.props.PlantsAction("name",value)}}
                 />
 
-                <Text> Email </Text>
+                <Text> Humidity </Text>
                 <TextInput
                     style={styles.input}
-                    placeholder="Masukan Email"
-                    onChangeText={(value)=>{this.props.UserAction("email",value)}}
+                    placeholder="Masukan Humidity"
+                    onChangeText={(value)=>{this.props.PlantsAction("humidity",value)}}
                 />
 
-                <Text> Password </Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Masukan Password"
-                    onChangeText={(value)=>{this.props.UserAction("password",value)}}
-                />
+               
                
                 <TouchableOpacity style={styles.box} onPress={()=>{this.handleInputData()}}><Text style={styles.boxLabel}>Submit</Text></TouchableOpacity>
             </View>
@@ -52,14 +47,14 @@ class Register extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    dataRegis:state.UserReducer
+    dataPlants:state.PlantsReducer
 })
 
 const mapDispatchToProps = {
-    UserAction
+    PlantsAction
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register)
+export default connect(mapStateToProps, mapDispatchToProps)(TambahkanTanaman)
 
 const styles = StyleSheet.create({
     input: {
