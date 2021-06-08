@@ -3,13 +3,13 @@ import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, TouchableOpa
 import axios from 'axios'
 
 
-export default class HistoryUser extends Component {
+export class ProfileTanaman extends Component {
 
     constructor(props) {
         super(props);
         // Don't call this.setState() here!
         this.state = { 
-            data: []
+          dataFlatList:{}
         };
 
       }
@@ -23,8 +23,9 @@ export default class HistoryUser extends Component {
         axios.get(`http://192.168.0.15:8080/plants/`)
         .then( (response) => {
        //   console.log(response.data)
-          let data=response.data;   
-          this.setState({data:data}); 
+          let data=response.data;
+          console.log(data)   
+          this.setState({dataFlatList:data}); 
         })
         .catch(function (error) {
         // handle error
@@ -36,26 +37,38 @@ export default class HistoryUser extends Component {
     }
 
 
-    renderItem = ({ item }) => (
-        <View style = {{borderWidth:5, borderColor:"black"}}>
-            <Text style={styles.title}>Name : {item.name}</Text>
-            <Text style={styles.title}>Humidity :{item.humidity}</Text>
-            
-            </View>
-    )
-
     render() {
-        return (
-            <SafeAreaView style={styles.container}>
-                <FlatList
-                data={this.state.data}
-                renderItem={this.renderItem}
-                keyExtractor={item => item.id}
+      return (
+          <View>
+              <FlatList
+                  data={this.state.dataFlatList}
+                  keyExtractor={item=>parseInt(item.id)}
+                  renderItem={({item})=>(
+                    <TouchableOpacity style={{borderWidth:5,borderColor:"red",flexDirection:"row",margin:5}} onPress={()=>{this.props.navigation.navigate("DetailTanaman")}}>
+                          <Image style={{width:100,height:100}}
+                              source={{uri:`http://192.168.0.15:8080/plants/image/${item.image}`}}
+                          />
+                          <View style={{flexDirection:"column",alignSelf:"center"}}>
+                              
+                              <Text>Name : {item.name}</Text>
+                          </View>
+                     </TouchableOpacity>
+                  )}
               />
-            </SafeAreaView>
-          );
-    }
+          </View>
+      )
+  }
 }
+
+const mapStateToProps = (state) => ({
+  
+})
+
+const mapDispatchToProps = {
+  
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileTanaman)
 
 const styles = StyleSheet.create({
     container: {

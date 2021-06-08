@@ -14,6 +14,7 @@ const plantsData = {
     id:0,
     name:"",
     humidity:0,
+    temp:0,
     water:false,
     dataPlants:{}
 }

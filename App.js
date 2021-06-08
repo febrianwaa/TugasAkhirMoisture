@@ -9,6 +9,11 @@ import Home from './src/Page/Home';
 import Register from './src/Page/Register';
 import Login from './src/Page/Login';
 import MainMenu from './src/Page/MainMenu';
+import TambahkanTanaman from './src/Page/TambahkanTanaman';
+import { ProfileTanaman } from './src/Page/ProfileTanaman';
+import Setting from './src/Page/Setting';
+import UpdateUser from './src/Page/UpdateUser';
+import DetailTanaman from './src/Page/DetailTanaman';
 
 const Stack = createStackNavigator();
 
@@ -23,6 +28,11 @@ class App extends Component {
           <Stack.Screen name="Register" component={Register}/>
           <Stack.Screen name="Login" component={Login}/>
           <Stack.Screen name="MainMenu" component={MainMenu}/>
+          <Stack.Screen name="TambahkanTanaman" component={TambahkanTanaman}/>
+          <Stack.Screen name="ProfileTanaman" component={ProfileTanaman}/>
+          <Stack.Screen name="Setting" component={Setting}/>
+          <Stack.Screen name="UpdateUser" component={UpdateUser}/>
+          <Stack.Screen name="DetailTanaman" component={DetailTanaman}/>
           </Stack.Navigator>
           </NavigationContainer>
       </Provider>

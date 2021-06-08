@@ -33,7 +33,9 @@ class MainMenu extends Component {
             <View>
             <TouchableOpacity style={styles.box} onPress={()=>{this.props.navigation.navigate("ProfileTanaman")}}><Text style={styles.boxLabel}>Profil Tanaman</Text></TouchableOpacity>   
 
-            <TouchableOpacity style={styles.box} onPress={()=>{this.props.navigation.navigate("TambahkanTanaman")}}><Text style={styles.boxLabel}>Tambahkan Tanaman</Text></TouchableOpacity>   
+            <TouchableOpacity style={styles.box} onPress={()=>{this.props.navigation.navigate("TambahkanTanaman")}}><Text style={styles.boxLabel}>Tambahkan Tanaman</Text></TouchableOpacity>  
+
+            <TouchableOpacity style={styles.box} onPress={()=>{this.props.navigation.navigate("Setting")}}><Text style={styles.boxLabel}>Setting</Text></TouchableOpacity> 
             
             <TouchableOpacity style={styles.box} onPress={()=>{this.handleLogout()}}><Text style={styles.boxLabel}>Logout</Text></TouchableOpacity>
             

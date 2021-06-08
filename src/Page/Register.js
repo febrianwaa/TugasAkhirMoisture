@@ -23,29 +23,29 @@ class Register extends Component {
 
     render() {
         return (
-            <View>
-                <Text> Username </Text>
+            <View style={styles.container}>
+                <View style={styles.inputContainer}>
                 <TextInput
-                    style={styles.input}
-                    placeholder="Masukan Username"
+                    style={styles.InputText}
+                    placeholder="Username"
                     onChangeText={(value)=>{this.props.UserAction("username",value)}}
                 />
-
-                <Text> Email </Text>
+                </View>
+                <View style={styles.inputContainer}>
                 <TextInput
-                    style={styles.input}
-                    placeholder="Masukan Email"
+                    style={styles.InputText}
+                    placeholder="Email"
                     onChangeText={(value)=>{this.props.UserAction("email",value)}}
                 />
-
-                <Text> Password </Text>
+                </View>
+                <View style={styles.inputContainer}>
                 <TextInput
-                    style={styles.input}
-                    placeholder="Masukan Password"
+                    style={styles.InputText}
+                    placeholder="Password"
                     onChangeText={(value)=>{this.props.UserAction("password",value)}}
                 />
-               
-                <TouchableOpacity style={styles.box} onPress={()=>{this.handleInputData()}}><Text style={styles.boxLabel}>Submit</Text></TouchableOpacity>
+               </View>
+                <TouchableOpacity style={styles.submitBtn} onPress={()=>{this.handleInputData()}}><Text style={{color:'white', fontSize:16}}>Submit</Text></TouchableOpacity>
             </View>
         )
     }
@@ -87,5 +87,39 @@ const styles = StyleSheet.create({
         padding: 15,
         marginBottom: 10,
         alignItems: 'center',
-      }
+      },
+
+
+      InputText:{
+        color: 'rgba(255,255,255,0.7)',
+        fontSize: 16,
+        paddingLeft: 20,
+        marginHorizontal: 20,
+        
+      },
+      container:{
+        flex:1,
+        backgroundColor:'green',
+        justifyContent: 'center',
+        alignItems:'center'
+    },
+    submitBtn:{
+        width:'70%',
+      backgroundColor:'#465881',
+      borderRadius:25,
+      height: 50,
+      alignItems: 'center',
+      marginBottom:10,
+      justifyContent:'center',
+      marginTop:40
+    },
+    inputContainer:{
+        width:'60%',
+        backgroundColor:'#465881',
+        borderRadius:20,
+        height: 60,
+        marginBottom:20,
+        justifyContent:'center',
+        padding:20
+    }
   });
