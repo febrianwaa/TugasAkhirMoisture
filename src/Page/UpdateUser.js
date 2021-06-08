@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View,StyleSheet, Text,  TouchableOpacity, TextInput } from 'react-native';
 import axios from 'axios'
-import { parse } from '@babel/core'; 
+
 
 export class UpdateUser extends Component {
     constructor(props) {
@@ -16,7 +16,7 @@ export class UpdateUser extends Component {
 
     handleUpdate(){
         console.log(this.state)
-        axios.put(`http://192.168.0.14:8080/user/updateUser/${this.state.id}`,this.state)
+        axios.put(`http://192.168.0.16:8080/user/updateUser/${this.state.id}`,this.state)
         .then( (response) => {
         //  console.log(response)
           alert(response.data)
@@ -32,11 +32,11 @@ export class UpdateUser extends Component {
         return (
             <View>
                 <Text style={styles.title}> Input Username </Text>
-                <TextInput value={this.state.nama} placeholder="Username" onChangeText={(data)=>{this.setState({username:data})}}/>
+                <TextInput value={this.state.username} placeholder="Username" onChangeText={(data)=>{this.setState({username:data})}}/>
                 <Text style={styles.title}> Input Email </Text>
                 <TextInput value={this.state.email} placeholder="Email" onChangeText={(data)=>{this.setState({email:data})}}/>
                 <Text style={styles.title}> Input Password </Text>
-                <TextInput value={this.state.phone} placeholder="Password" onChangeonChangeText={(data)=>{this.setState({password:data})}}/>
+                <TextInput value={this.state.password} placeholder="Password" onChangeonChangeText={(data)=>{this.setState({password:data})}}/>
                
                 <TouchableOpacity style={styles.button} onPress={this.handleUpdate.bind(this)}><Text style={styles.title}>Update</Text></TouchableOpacity>
              {/*   <TouchableOpacity style={styles.button} onPress={()=>{this.props.navigation.navigate("App")}}><Text style={styles.title}>Cancel</Text></TouchableOpacity>*/}

@@ -25,7 +25,7 @@ export default class Setting extends Component {
 
     getData =()=>{  
         //Make a request for a user with a given ID
-        axios.get(`http://192.168.0.14:8080/user/`)
+        axios.get(`http://192.168.0.16:8080/user/`)
         .then( (response) => {
        //   console.log(response.data)
           let data=response.data;   
@@ -43,7 +43,7 @@ export default class Setting extends Component {
    
 
     deleteData(id){
-      axios.delete(`http://192.168.0.14:8080/user/deleteUser/${id}`)
+      axios.delete(`http://192.168.0.16:8080/user/deleteUser/${id}`)
       .then( (response) => {
         alert(response.data)
       })

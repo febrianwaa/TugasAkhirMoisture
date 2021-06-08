@@ -3,7 +3,7 @@ import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, TouchableOpa
 import axios from 'axios'
 
 
-export class ProfileTanaman extends Component {
+export default class ProfileTanaman extends Component {
 
     constructor(props) {
         super(props);
@@ -20,7 +20,7 @@ export class ProfileTanaman extends Component {
 
     getData =()=>{  
         //Make a request for a user with a given ID
-        axios.get(`http://192.168.0.15:8080/plants/`)
+        axios.get(`http://192.168.0.16:8080/plants/`)
         .then( (response) => {
        //   console.log(response.data)
           let data=response.data;
@@ -46,7 +46,7 @@ export class ProfileTanaman extends Component {
                   renderItem={({item})=>(
                     <TouchableOpacity style={{borderWidth:5,borderColor:"red",flexDirection:"row",margin:5}} onPress={()=>{this.props.navigation.navigate("DetailTanaman")}}>
                           <Image style={{width:100,height:100}}
-                              source={{uri:`http://192.168.0.15:8080/plants/image/${item.image}`}}
+                              source={{uri:`http://192.168.0.16:8080/plants/image/${item.image}`}}
                           />
                           <View style={{flexDirection:"column",alignSelf:"center"}}>
                               
@@ -59,17 +59,6 @@ export class ProfileTanaman extends Component {
       )
   }
 }
-
-const mapStateToProps = (state) => ({
-  
-})
-
-const mapDispatchToProps = {
-  
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileTanaman)
-
 const styles = StyleSheet.create({
     container: {
       flex: 1,

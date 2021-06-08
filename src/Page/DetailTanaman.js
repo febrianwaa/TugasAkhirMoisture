@@ -23,7 +23,7 @@ import { connect } from 'react-redux'
 
     getData =()=>{  
         //Make a request for a user with a given ID
-        axios.get(`http://192.168.0.15:8080/plants/`)
+        axios.get(`http://192.168.0.16:8080/plants/`)
         .then( (response) => {
        //   console.log(response.data)
           let data=response.data;   

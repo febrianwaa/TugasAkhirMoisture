@@ -12,7 +12,7 @@ class Register extends Component {
     }
 
     handleInputData(){
-        axios.post("http://192.168.0.15:8080/user/addUser/",this.props.dataRegis)
+        axios.post("http://192.168.0.16:8080/user/",this.props.dataRegis)
         .then((response)=>{
             alert(JSON.stringify(response.data));
             this.props.navigation.replace("Home")

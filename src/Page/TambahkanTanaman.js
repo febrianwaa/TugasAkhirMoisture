@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput,StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput,StyleSheet, TouchableOpacity, Button, Image } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import * as ImagePicker from 'expo-image-picker';
 
 import axios from 'axios'
 
@@ -57,7 +58,7 @@ class TambahkanTanaman extends Component {
             name: filename.split('/').pop(),
          })
 
-        axios.post("http://192.168.0.15:8080/plants/",formData,{
+        axios.post("http://192.168.0.16:8080/plants/",formData,{
             headers:{
                 'Content-Type': 'multipart/form-data'
             }

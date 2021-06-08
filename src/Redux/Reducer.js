@@ -15,6 +15,7 @@ const plantsData = {
     name:"",
     humidity:0,
     temp:0,
+    image:"",
     water:false,
     dataPlants:{}
 }

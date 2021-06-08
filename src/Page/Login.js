@@ -12,7 +12,7 @@ class Login extends Component {
     }
 
     handleLogin(){
-        axios.get('http://192.168.0.15:8080/user/login/',{
+        axios.get('http://192.168.0.16:8080/user/login/',{
             params:{
                 username:this.props.dataUsername,
                 password:this.props.dataPassword,
