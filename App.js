@@ -10,7 +10,7 @@ import Register from './src/Page/Register';
 import Login from './src/Page/Login';
 import MainMenu from './src/Page/MainMenu';
 import TambahkanTanaman from './src/Page/TambahkanTanaman';
-import  ProfileTanaman from './src/Page/ProfileTanaman';
+import ProfileTanaman from './src/Page/ProfileTanaman';
 import Setting from './src/Page/Setting';
 import UpdateUser from './src/Page/UpdateUser';
 import DetailTanaman from './src/Page/DetailTanaman';
@@ -24,10 +24,10 @@ class App extends Component {
       <Provider store={store}>
         <NavigationContainer>
           <Stack.Navigator>
-          <Stack.Screen name="Home" component={Home}/>
+          <Stack.Screen name="Home" component={Home} options={{headerShown: false}}/>
           <Stack.Screen name="Register" component={Register}/>
           <Stack.Screen name="Login" component={Login}/>
-          <Stack.Screen name="MainMenu" component={MainMenu}/>
+          <Stack.Screen name="Main Menu" component={MainMenu}/>
           <Stack.Screen name="TambahkanTanaman" component={TambahkanTanaman}/>
           <Stack.Screen name="Setting" component={Setting}/>
           <Stack.Screen name="UpdateUser" component={UpdateUser}/>

@@ -9,6 +9,10 @@ class Register extends Component {
 
     constructor(props){
         super(props)
+        this.state={
+            username:"",
+            password:""
+        }
     }
 
     handleInputData(){
@@ -22,34 +26,53 @@ class Register extends Component {
     }
 
     render() {
+        console.log(this.state);
         return (
-            <View style={styles.container}>
-                <View style={styles.inputContainer}>
-                <TextInput
-                    style={styles.InputText}
-                    placeholder="Username"
-                    onChangeText={(value)=>{this.props.UserAction("username",value)}}
-                />
-                </View>
-                <View style={styles.inputContainer}>
-                <TextInput
-                    style={styles.InputText}
-                    placeholder="Email"
-                    onChangeText={(value)=>{this.props.UserAction("email",value)}}
-                />
-                </View>
-                <View style={styles.inputContainer}>
-                <TextInput
-                    style={styles.InputText}
-                    placeholder="Password"
-                    onChangeText={(value)=>{this.props.UserAction("password",value)}}
-                />
-               </View>
-                <TouchableOpacity style={styles.submitBtn} onPress={()=>{this.handleInputData()}}><Text style={{color:'white', fontSize:16}}>Submit</Text></TouchableOpacity>
+          <View style={styles.container}>
+            <Text style={styles.text}>Username</Text>
+            <View style={styles.inputContainer}>
+              <TextInput
+                style={styles.inputContainerText}
+                placeholder="Username"
+                onChangeText={(value) => {
+                  this.setState({ username: value });
+                }}
+              />
             </View>
-        )
+            <Text style={styles.text}>Email</Text>
+            <View style={styles.inputContainer}>
+              <TextInput
+                style={styles.inputContainerText}
+                placeholder="Email"
+                onChangeText={(value) => {
+                  this.setState({ email: value });
+                }}
+              />
+            </View>
+    
+            <Text style={styles.text}>Password</Text>
+            <View style={styles.inputContainer}>
+              <TextInput
+                style={styles.inputContainerText}
+                placeholder="Password"
+                onChangeText={(value) => {
+                  this.setState({ password: value });
+                }}
+              />
+            </View>
+    
+            <TouchableOpacity
+              style={styles.loginBtn}
+              onPress={() => {
+                this.handleLogin();
+              }}
+            >
+              <Text style={{ color: "#31A05F", fontSize: 20, fontWeight: "bold" }}>Log in</Text>
+            </TouchableOpacity>
+          </View>
+        );
+      }
     }
-}
 
 const mapStateToProps = (state) => ({
     dataRegis:state.UserReducer
@@ -67,59 +90,100 @@ const styles = StyleSheet.create({
       margin: 12,
       borderWidth: 1,
     },
-    button:{
-        padding:20,
+  
+    button: {
+      padding: 20,
     },
-    text:{
-        textAlign:'center',
-        borderWidth:5,
+  
+    text: {
+      color: "white",
+      padding: 2,
+      marginRight: "auto",
+      marginRight: "55%",
     },
+  
     boxLabel: {
-        textTransform: 'uppercase',
-        fontSize: 16,
-        letterSpacing: 1,
-        marginBottom: 5,
-      },
-    
-      box: {
-        borderWidth: 3,
-        borderColor: '#ddd',
-        padding: 15,
-        marginBottom: 10,
-        alignItems: 'center',
-      },
-
-
-      InputText:{
-        color: 'rgba(255,255,255,0.7)',
-        fontSize: 16,
-        paddingLeft: 20,
-        marginHorizontal: 20,
-        
-      },
-      container:{
-        flex:1,
-        backgroundColor:'green',
-        justifyContent: 'center',
-        alignItems:'center'
+      textTransform: "uppercase",
+      fontSize: 17,
+      letterSpacing: 1,
+      marginBottom: 5,
     },
-    submitBtn:{
-        width:'70%',
-      backgroundColor:'#465881',
-      borderRadius:25,
+  
+    box: {
+      borderWidth: 3,
+      borderColor: "#ddd",
+      padding: 15,
+      marginBottom: 10,
+      alignItems: "center",
+    },
+  
+    signup: {
+      width: "70%",
+      fontSize: 16,
+      borderRadius: 10,
       height: 50,
-      alignItems: 'center',
-      marginBottom:10,
-      justifyContent:'center',
-      marginTop:40
+      alignItems: "center",
+      justifyContent: "center",
+      marginTop: 2,
+      backgroundColor: "#17A351",
+      marginBottom: 10,
+      shadowColor: "#000",
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.8,
+      shadowRadius: 2,
+      elevation: 1,
     },
-    inputContainer:{
-        width:'60%',
-        backgroundColor:'#465881',
-        borderRadius:20,
-        height: 60,
-        marginBottom:20,
-        justifyContent:'center',
-        padding:20
-    }
+  
+    loginBtn: {
+      width: "70%",
+      backgroundColor: "#F6F6F6",
+      borderRadius: 10,
+      height: 50,
+      alignItems: "center",
+      marginBottom: 10,
+      justifyContent: "center",
+      marginTop: 250,
+  
+      shadowColor: "#000",
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.8,
+      shadowRadius: 2,
+      elevation: 1,
+    },
+  
+    inputContainer: {
+      width: "70%",
+      backgroundColor: "#F6F6F6",
+      borderRadius: 10,
+      height: 60,
+      marginBottom: 5,
+      opacity: 0.45,
+    },
+  
+    inputContainerText: {
+      color: "#000000",
+      padding: 20,
+      justifyContent: "center",
+    },
+  
+    container: {
+      flex: 1,
+      backgroundColor: "#31A05F",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    logoText: {
+      fontSize: 25,
+      fontWeight: "500",
+      marginBottom: 40,
+      color: "white",
+      opacity: 1.0,
+    },
+    logo: {
+      width: 250,
+      height: 250,
+    },
+    logoContainer: {
+      alignItems: "center",
+    },
   });
