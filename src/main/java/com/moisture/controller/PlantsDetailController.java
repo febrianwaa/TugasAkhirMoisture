@@ -30,7 +30,9 @@ public class PlantsDetailController {
 	
 	@GetMapping("/")
 	private List<PlantsDetails> getDetail(){
-		return detailRepo.findAll();
+		return detailRepo.getPlantsDetail();
 		
 	}
+	
+	
 }
