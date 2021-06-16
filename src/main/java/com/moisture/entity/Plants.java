@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,8 +26,11 @@ public class Plants {
     private long id;
     private String name;
     private String image;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "plants_detail_id")
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "plantsDetail", referencedColumnName = "id")
     private PlantsDetails plantsDetail;
-   
+    
+//    @ManyToOne(cascade = CascadeType.MERGE)
+//   	@JoinColumn(name="idUser", referencedColumnName = "id")
+//   	private User idUser;
 }

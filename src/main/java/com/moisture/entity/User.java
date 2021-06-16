@@ -30,9 +30,6 @@ public class User {
     private String username;
     private String email;
     private String password;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    List<Plants> lstPlants = new ArrayList<Plants>();
-
+  
 	
 }

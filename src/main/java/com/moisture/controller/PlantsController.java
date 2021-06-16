@@ -38,6 +38,10 @@ public class PlantsController {
 		return plantsRepo.findAll();
 	}
 	
+	@GetMapping("/{id}")
+	public List<Plants> getAllData(@PathVariable Long id){
+		return plantsRepo.findAllById(id);
+	}
 
 	
 	@DeleteMapping("/deletePlants/{id}")
