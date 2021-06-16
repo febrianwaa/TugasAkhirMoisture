@@ -9,7 +9,7 @@ export default class ProfileTanaman extends Component {
         super(props);
         // Don't call this.setState() here!
         this.state = { 
-          dataFlatList:{}
+            data: [{}]
         };
 
       }
@@ -20,12 +20,11 @@ export default class ProfileTanaman extends Component {
 
     getData =()=>{  
         //Make a request for a user with a given ID
-        axios.get(`http://192.168.0.16:8080/plants/`)
+        axios.get(`http://192.168.0.11:8080/plants/`)
         .then( (response) => {
        //   console.log(response.data)
-          let data=response.data;
-          console.log(data)   
-          this.setState({dataFlatList:data}); 
+          let data=response.data;   
+          this.setState({data:data}); 
         })
         .catch(function (error) {
         // handle error
@@ -37,28 +36,63 @@ export default class ProfileTanaman extends Component {
     }
 
 
-    render() {
-      return (
-          <View>
-              <FlatList
-                  data={this.state.dataFlatList}
-                  keyExtractor={item=>parseInt(item.id)}
-                  renderItem={({item})=>(
-                    <TouchableOpacity style={{borderWidth:5,borderColor:"red",flexDirection:"row",margin:5}} onPress={()=>{this.props.navigation.navigate("DetailTanaman")}}>
-                          <Image style={{width:100,height:100}}
-                              source={{uri:`http://192.168.0.16:8080/plants/image/${item.image}`}}
-                          />
-                          <View style={{flexDirection:"column",alignSelf:"center"}}>
+//     render() {
+//       return (
+//           <View>
+//               <FlatList
+//                   data={this.state.data}
+//                   keyExtractor={item=>parseInt(item.id)}
+//                   renderItem={({item})=>(
+//                     <View>
+//                        {/* <TouchableOpacity style={{borderWidth:5,borderColor:"red",flexDirection:"row",margin:5}} onPress={()=>{this.props.navigation.navigate("DetailCalonTinder")}}> */}
+//                           <Image style={{width:100,height:100}}
+//                               source={{uri:`http://192.168.0.11:8080/plants/image/${item.image}`}}
+//                           />
+//                           <View style={{flexDirection:"column",alignSelf:"center"}}>
                               
-                              <Text>Name : {item.name}</Text>
-                          </View>
-                     </TouchableOpacity>
-                  )}
+//                               <Text>Name : {item.name}</Text>
+//                               <Text>Status : {JSON.stringify(item.plantsDetail)}</Text>
+                              
+//                           </View>
+//                       {/*  </TouchableOpacity> */}
+//                       </View>
+//                   )}
+//               />
+//           </View>
+//       )
+//   }
+// }
+
+
+
+
+
+
+    renderItem = ({ item }) => (
+            <View style={{borderWidth:5,borderColor:"black",flexDirection:"row",margin:5}}>
+              <Image style={{width:100,height:100}}
+                                source={{uri:`http://192.168.0.11:8080/plants/image/${item.image}`}}
+                            />
+            <View style ={{flexDirection:"column",alignSelf:"center"}}>
+            <Text style={styles.title}>Name : {item.name}</Text>
+            <Text style={styles.title}>Status :{JSON.stringify(item.plantsDetail)}</Text>
+            </View>
+            </View>
+    )
+
+    render() {
+        return (
+            <SafeAreaView style={styles.container}>
+                <FlatList
+                data={this.state.data}
+                renderItem={this.renderItem}
+                keyExtractor={item => item.id}
               />
-          </View>
-      )
-  }
+            </SafeAreaView>
+          );
+    }
 }
+
 const styles = StyleSheet.create({
     container: {
       flex: 1,

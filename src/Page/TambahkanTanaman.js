@@ -12,9 +12,18 @@ class TambahkanTanaman extends Component {
     this.state = {
       name: "",
       image: "../Images/LogoAPB.png",
-      dataAlat: [],
-      user_id: this.props.dataId,
-      plantsDetail: "",
+      dataAlat: [ 
+     { "id": 1,
+      "id_arduino": 123,
+      "soil_moisture": 1234,
+     }  
+      ],
+      plantsDetail: {
+        "id": 1,
+        "id_arduino": 123,
+        "soil_moisture": 1234,
+      },
+      idUser:this.props.dataUser,
     };
   }
 
@@ -22,7 +31,7 @@ class TambahkanTanaman extends Component {
     this.getPermission();
 
     axios
-      .get(`http://192.168.43.232:8080/detail/`)
+      .get(`http://192.168.0.11:8080/detail/`)
       .then((response) => {
         this.setState({ dataAlat: response.data });
       })
@@ -68,19 +77,34 @@ class TambahkanTanaman extends Component {
     });
 
     axios
-      .post("http://192.168.43.232:8080/plants/", formData, {
+      .post("http://192.168.0.11:8080/plants/", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       })
       .then((response) => {
         alert(response.data);
-        this.props.navigation.replace("MainMenu");
+        this.props.navigation.replace("Main Menu");
       })
       .catch((error) => {
         console.log(error);
       });
   }
+
+
+  pickerChange(index){
+    this.state.dataAlat.map( (v,i)=>{
+     if( index === i ){
+       this.setState({
+       plantsDetail: this.state.dataAlat[index]
+      })
+     }
+    })
+}
+
+
+
+
 
   render() {
     console.log(this.state.plantsDetail);
@@ -96,7 +120,7 @@ class TambahkanTanaman extends Component {
         />
 
         <Text> Alat yang terdeteksi </Text>
-        <FlatList
+        {/* <FlatList
           data={this.state.dataAlat}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
@@ -107,11 +131,42 @@ class TambahkanTanaman extends Component {
               </TouchableOpacity>
             </View>
           )}
-        />
+        /> */}
+
+
+{/* <Picker
+    selectedValue={this.state.plantsDetail.id_arduino}
+    mode="dropdown"
+    style={{ height: 50, width: 300 }}
+    onValueChange={(itemValue, itemIndex) => this.pickerChange(itemIndex)}>
+        
+        {
+        this.state.dataAlat.map( (v)=>{
+         return <Picker.Item label={v.id_arduino.toString()} value={v.id_arduino} key={v.id}/>
+        })
+        }
+
+</Picker> */}
+
+<Picker
+                    selectedValue={this.state.plantsDetail.id_arduino}
+                    mode="dropdown"
+                    style={{ height: 50, width: 300 }}
+                    onValueChange={(itemValue, itemIndex) => this.pickerChange(itemIndex)}>
+                        
+                        {
+                        this.state.dataAlat.map( (v)=>{
+                         return <Picker.Item label={v.id_arduino.toString()} value={v.id_arduino} />
+                        })
+                        }
+
+                </Picker>
+
+
         <Button
           title="Pick an image from camera roll"
           onPress={() => {
-            this.pickImage();
+            this.pickImage()
           }}
         />
         <Image source={{ uri: this.state.image }} style={{ width: 200, height: 200, alignSelf: "center" }} />
@@ -119,7 +174,7 @@ class TambahkanTanaman extends Component {
         <TouchableOpacity
           style={styles.box}
           onPress={() => {
-            this.handleInputData();
+            this.handleInputData()
           }}
         >
           <Text style={styles.boxLabel}>Submit</Text>

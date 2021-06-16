@@ -43,7 +43,7 @@ export default class Setting extends Component {
    
 
     deleteData(id){
-      axios.delete(`http://192.168.0.16:8080/user/deleteUser/${id}`)
+      axios.delete(`http://192.168.0.11:8080/user/deleteUser/${id}`)
       .then( (response) => {
         alert(response.data)
       })
