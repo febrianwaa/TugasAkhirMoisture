@@ -23,9 +23,9 @@ class App extends Component {
       <Provider store={store}>
         <NavigationContainer>
           <Stack.Navigator>
-            <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
+            {/* <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
             <Stack.Screen name="Register" component={Register} />
-            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Login" component={Login} /> */}
             <Stack.Screen name="Main Menu" component={MainMenu} />
             <Stack.Screen name="TambahkanTanaman" component={TambahkanTanaman} />
             <Stack.Screen name="Setting" component={Setting} />

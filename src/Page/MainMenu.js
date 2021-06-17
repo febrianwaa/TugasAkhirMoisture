@@ -1,12 +1,41 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View, Image, ScrollView} from "react-native";
+import { Svg, Path } from "react-native-svg";
+
 
 export class MainMenu extends Component {
   render() {
     return (
-      <View>
-        <TouchableOpacity style={styles.box} onPress={() => this.props.navigation.navigate("ProfileTanaman")}>
-          <Text style={styles.boxLabel}>Profil Tanaman</Text>
+      <View style={styles.container}>
+      <Text style={styles.style20}>  Menu  </Text>
+
+        <View style={{alignItems: "center",  width: "40%", marginBottom: 10, marginTop:120}}>
+        <TouchableOpacity style={styles.style19} onPress={() => this.props.navigation.navigate("ProfileTanaman")}>
+        <Image style={{height: 145, width: 150}} source={require("../Images/MyPlant.png")}/>
+        </TouchableOpacity>
+        </View>
+
+        <View style={{alignItems: "center",justifyContent: "center",  width: "120%", marginBottom: 10, marginTop:50}}>
+      	<TouchableOpacity style={styles.style15} onPress={() => this.props.navigation.navigate("Setting")}>
+        <Image style={{height: 150, width: 150}} source={require("../Images/Profile.png")}/>
+        </TouchableOpacity>
+				</View>	
+
+        <View style={{alignItems: "center",justifyContent: "center",  width: "40%", marginBottom: 10, marginTop:140}}>
+      	<TouchableOpacity style={styles.style19} onPress={() => this.props.navigation.navigate("TambahkanTanaman")}>
+        <Image style={{height: 150, width: 150}} source={require("../Images/AddPlant.png")}/>
+        </TouchableOpacity>
+				</View>	
+
+        <View style={{alignItems: "center",justifyContent: "center",  width: "120%", marginBottom: 10, marginTop:-5}}>
+      	<TouchableOpacity style={styles.style15} onPress={() => this.props.navigation.navigate("Login")}>
+        <Image style={{height: 145, width: 150}} source={require("../Images/Logout.png")}/>
+        </TouchableOpacity>
+				</View>	
+
+
+        {/* <TouchableOpacity style={styles.box} onPress={() => this.props.navigation.navigate("Profile Tanaman")}>
+          <Text style={styles.boxLabel}>Profile Tanaman</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.box} onPress={() => this.props.navigation.navigate("TambahkanTanaman")}>
@@ -19,7 +48,7 @@ export class MainMenu extends Component {
 
         <TouchableOpacity style={styles.box}>
           <Text style={styles.boxLabel}>Logout</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     );
   }
@@ -57,4 +86,86 @@ const styles = StyleSheet.create({
     height: 40,
     alignContent: "center",
   },
+
+
+
+
+
+
+  style20: {
+    width: 147,
+    height: 54,
+    position: "absolute",
+    
+    left: 28,
+    top: 45,
+    transform: [
+      {translateX: 0},
+      {translateY: 0},
+    ],
+    shadowColor: "rgba(0,0,0,0)",
+    color: "white",
+   // color: "rgb(255, 255, 255)",
+    fontSize: 30,
+    fontWeight: "700",
+    lineHeight: 35.1562,
+    fontFamily: "Roboto",
+    textAlign: "center",
+    },
+    style19: {
+      width: 95,
+      height: 95,
+      position: "absolute",
+      transform: [
+        {translateX: 26},
+        {translateY: 25},
+      ],
+      shadowColor: "rgba(0,0,0,0)",
+      },
+
+      container: {
+        flex: 1,
+    backgroundColor: '#31A05F',
+   
+      },
+
+      inputContainer: {
+        width: "70%",
+        backgroundColor: "#F6F6F6",
+        borderRadius: 10,
+        height: 60,
+        marginBottom: 5,
+        opacity: 0.45,
+      },
+      style15: {
+        width: 95,
+        height: 99,
+        position: "absolute",
+        transform: [
+          {translateX: 26},
+          {translateY: 20},
+        ],
+        shadowColor: "rgba(0,0,0,0)",
+        },
+        style7: {
+          width: 99,
+          height: 99,
+          position: "absolute",
+          transform: [
+            {translateX: 24},
+            {translateY: 20},
+          ],
+          shadowColor: "rgba(0,0,0,0)",
+          },
+          style11: {
+            width: 95,
+            height: 95,
+            position: "absolute",
+            transform: [
+              {translateX: 24},
+              {translateY: 11},
+            ],
+            shadowColor: "rgba(0,0,0,0)",
+            },
+     
 });
