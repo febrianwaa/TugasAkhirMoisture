@@ -14,6 +14,7 @@ import ProfileTanaman from "./src/Page/ProfileTanaman";
 import Setting from "./src/Page/Setting";
 import UpdateUser from "./src/Page/UpdateUser";
 import DetailTanaman from "./src/Page/DetailTanaman";
+import Glosarium from "./src/Page/Glosarium";
 
 const Stack = createStackNavigator();
 
@@ -25,13 +26,15 @@ class App extends Component {
           <Stack.Navigator>
             {/* <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
             <Stack.Screen name="Register" component={Register} />
-            <Stack.Screen name="Login" component={Login} /> */}
-            <Stack.Screen name="Main Menu" component={MainMenu} />
-            <Stack.Screen name="TambahkanTanaman" component={TambahkanTanaman} />
-            <Stack.Screen name="Setting" component={Setting} />
-            <Stack.Screen name="UpdateUser" component={UpdateUser} />
-            <Stack.Screen name="DetailTanaman" component={DetailTanaman} />
-            <Stack.Screen name="ProfileTanaman" component={ProfileTanaman} />
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Main Menu" component={MainMenu} options={{ headerShown: false }} />
+            <Stack.Screen name="TambahkanTanaman" component={TambahkanTanaman} options={{ headerShown: false }}/> */}
+            {/* <Stack.Screen name="Setting" component={Setting} /> */}
+            {/* <Stack.Screen name="UpdateUser" component={UpdateUser} options={{ headerShown: false }}/>
+            <Stack.Screen name="DetailTanaman" component={DetailTanaman} /> */}
+            <Stack.Screen name="ProfileTanaman" component={ProfileTanaman} options={{ headerShown: false }}/>
+
+          <Stack.Screen name="glosarium" component={Glosarium} options={{ headerShown: false }}/>
           </Stack.Navigator>
         </NavigationContainer>
       </Provider>

@@ -65,19 +65,36 @@ export default class ProfileTanaman extends Component {
 
 
 
+deleteData(id){
+//   axios.delete(`http://192.168.0.11:8080/plants/deletePlants/${id}`)
+//   .then( (response) => {
+//     alert(response.data)
+//   })
+// .catch(function (error) {
+//   // handle error
+//    console.log(error);
+//   })
+}
 
 
 
     renderItem = ({ item }) => (
-            <View style={{borderWidth:5,borderColor:"black",flexDirection:"row",margin:5}}>
-              <Image style={{width:100,height:100}}
-                                source={{uri:`http://192.168.0.11:8080/plants/image/${item.image}`}}
-                            />
+            <TouchableOpacity style={styles.cek} onPress={() => this.props.navigation.navigate("glosarium")}>
+
+              <Image style={{width:AVATAR_SIZE,height:AVATAR_SIZE,borderRadius: AVATAR_SIZE, marginRight:SPACING /2}}
+                source={{uri:`http://192.168.0.11:8080/plants/image/${item.image}`}}
+              />
+
+
             <View style ={{flexDirection:"column",alignSelf:"center"}}>
-            <Text style={styles.title}>Name : {item.name}</Text>
-            <Text style={styles.title}>Status :{JSON.stringify(item.plantsDetail)}</Text>
+            <Text style={styles.title}>{item.name}</Text>
+            {/* <Text style={styles.title}>Status :{JSON.stringify(item.plantsDetail)}</Text> */}
             </View>
-            </View>
+            <TouchableOpacity style={{marginLeft:220,marginTop:20}} onPress={() => this.deleteData(item.id)}>
+            <Image style={{height: 30, width: 30}} source={require("../Images/delete.png")}/>
+            </TouchableOpacity>
+
+            </TouchableOpacity>
     )
 
     render() {
@@ -92,11 +109,16 @@ export default class ProfileTanaman extends Component {
           );
     }
 }
-
+const AVATAR_SIZE = 70;
+const SPACING = 20;
 const styles = StyleSheet.create({
     container: {
       flex: 1,
       marginTop: StatusBar.currentHeight || 0,
+      backgroundColor:'#31A05F',
+      justifyContent: "center",
+    
+      
     },
     item: {
       backgroundColor: '#f9c2ff',
@@ -119,4 +141,23 @@ const styles = StyleSheet.create({
         letterSpacing: 1,
         marginBottom: 5,
       },
+      cek:{
+        flexDirection:"row",
+        backgroundColor:'rgba(255,255,255,0.8)',
+        borderRadius:20, 
+        padding:15, 
+        marginBottom:20,
+        shadowColor:"#000",
+        shadowOffset:{
+            width:0,
+            height:10
+            },
+        shadowOpacity:.3,
+        shadowRadius:20,
+      
+        
+        
+        
+        
+      }
   });

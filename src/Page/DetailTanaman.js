@@ -12,7 +12,7 @@ import { connect } from 'react-redux'
         super(props);
         // Don't call this.setState() here!
         this.state = { 
-            data: [],
+            data: [{}],
         };
 
       }
@@ -40,8 +40,8 @@ import { connect } from 'react-redux'
     renderItem = ({ item }) => (
         <View style = {{borderWidth:5, borderColor:"black"}}>
             <Text style={styles.title}>Name : {item.name}</Text>
-            <Text style={styles.title}>Humidity :{item.humidity}</Text>
-            <Text style={styles.title}>Temp :{item.temp}</Text>
+            <Text style={styles.title}>Status :{JSON.stringify(item.plantsDetail)}</Text>
+            
         
             </View>
     )

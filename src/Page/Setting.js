@@ -72,13 +72,17 @@ export default class Setting extends Component {
 
     render() {
         return (
-            <SafeAreaView style={styles.container}>
-              <FlatList
-                data={this.state.data}
-                renderItem={this.renderItem}
-                keyExtractor={item => item.id}
-              />
-            </SafeAreaView>
+            // <SafeAreaView style={styles.container}>
+            //   <FlatList
+            //     data={this.state.data}
+            //     renderItem={this.renderItem}
+            //     keyExtractor={item => item.id}
+            //   />
+            // </SafeAreaView>
+<View style={styles.footer}>
+<Text style={styles.title}>Delete</Text>
+</View>
+
           );
     }
 }
@@ -103,5 +107,13 @@ const styles = StyleSheet.create({
       backgroundColor: "#DDDDDD",
       padding: 10,
     },
+    footer: {
+      flex: 1,
+      backgroundColor: '#fff',
+      borderTopLeftRadius: 50,
+      borderTopRightRadius: 50,
+      paddingVertical: 50,
+      paddingHorizontal: 30
+  },
   });
   

@@ -109,17 +109,27 @@ class TambahkanTanaman extends Component {
   render() {
     console.log(this.state.plantsDetail);
     return (
-      <View>
-        <Text> Name </Text>
+      <View style={styles.container}>
+
+        <View style={styles.styleBACK}>
+        <TouchableOpacity style={styles.styleBack} onPress={() => this.props.navigation.navigate("Main Menu")}>
+        <Image style={{height: 30, width: 30}} source={require("../Images/back.png")}/>
+        </TouchableOpacity>
+        </View>
+
+
+        <Text style={styles.text}> Plant Name </Text>
+        <View style={styles.inputContainer}>
         <TextInput
-          style={styles.input}
-          placeholder="Masukan Nama"
+          style={styles.inputContainerText}
+          placeholder="Enter Plant Name"
           onChangeText={(value) => {
             this.setState({ name: value });
           }}
         />
+      </View>
 
-        <Text> Alat yang terdeteksi </Text>
+        <Text style={styles.text}> Sensor Code </Text>
         {/* <FlatList
           data={this.state.dataAlat}
           keyExtractor={(item) => item.id.toString()}
@@ -147,11 +157,12 @@ class TambahkanTanaman extends Component {
         }
 
 </Picker> */}
-
+<View style={styles.inputContainer}>
 <Picker
+                    style={styles.inputContainerText}
                     selectedValue={this.state.plantsDetail.id_arduino}
                     mode="dropdown"
-                    style={{ height: 50, width: 300 }}
+                   // style={{ height: 50, width: 300 }}
                     onValueChange={(itemValue, itemIndex) => this.pickerChange(itemIndex)}>
                         
                         {
@@ -161,23 +172,34 @@ class TambahkanTanaman extends Component {
                         }
 
                 </Picker>
+                </View>
 
-
-        <Button
-          title="Pick an image from camera roll"
+        {/* <Button style={styles.imageBtn}
+          title="Image"
           onPress={() => {
             this.pickImage()
           }}
         />
-        <Image source={{ uri: this.state.image }} style={{ width: 200, height: 200, alignSelf: "center" }} />
+        <Image source={{ uri: this.state.image }} style={{ width: 150, height: 150, alignSelf: "center" }} /> */}
+        <View style={{width: "70%", marginTop:5}}>
+        <TouchableOpacity style={styles.imageBtn}
+         // title="Image"
+          onPress={() => {
+            this.pickImage()
+          }}
+        >
+         <Text style={{ color: "#31A05F", fontSize: 20, fontWeight: "bold" }}>Image</Text>
+         </TouchableOpacity>
+         </View>
+         <Image source={{ uri: this.state.image }} style={{ width: 150, height: 150, alignSelf: "center" }} />
 
         <TouchableOpacity
-          style={styles.box}
+          style={styles.loginBtn}
           onPress={() => {
             this.handleInputData()
           }}
         >
-          <Text style={styles.boxLabel}>Submit</Text>
+          <Text style={{ color: "#31A05F", fontSize: 20, fontWeight: "bold" }}>Add Plant</Text>
         </TouchableOpacity>
       </View>
     );
@@ -220,4 +242,124 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     alignItems: "center",
   },
+
+
+  container: {
+    flex: 1,
+    backgroundColor: "#31A05F",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  inputContainer: {
+    width: "70%",
+    backgroundColor: "#F6F6F6",
+    borderRadius: 10,
+    height: 60,
+    marginBottom: 10,
+    opacity: 0.45,
+  },
+  inputContainerText: {
+    color: "#000000",
+    padding: 20,
+    justifyContent: "center",
+  },
+  text: {
+    color: "white",
+    padding: 2,
+    marginRight: "auto",
+    marginRight: "55%",
+  },
+  loginBtn: {
+    width: "70%",
+    backgroundColor: "#F6F6F6",
+    borderRadius: 10,
+    height: 50,
+    alignItems: "center",
+    marginBottom: 10,
+    justifyContent: "center",
+    marginTop: 70,
+
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 1,
+  },
+  style16: {
+    width: 293,
+    height: 72,
+    position: "absolute",
+    left: 41,
+    top: 188,
+    transform: [
+      {translateX: 0},
+      {translateY: 0},
+    ],
+    shadowColor: "rgba(0,0,0,0)",
+    },
+  style17: {
+    width: 85,
+    height: 14,
+    position: "absolute",
+    left: "50%",
+    top: "50%",
+    transform: [
+      {translateX: -99.5},
+      {translateY: 12},
+    ],
+    shadowColor: "rgba(0,0,0,0)",
+    color: "rgb(255, 255, 255)",
+    fontSize: 12,
+    fontWeight: "400",
+    lineHeight: 14.0625,
+    fontFamily: "Roboto",
+    textAlign: "left",
+    },
+
+    styleBACK: {
+      width: 140,
+      height: 54,
+      position: "absolute",
+      
+      left: 28,
+      top: 50,
+      transform: [
+        {translateX: 0},
+        {translateY: 0},
+      ],
+      shadowColor: "rgba(0,0,0,0)",
+      color: "white",
+     // color: "rgb(255, 255, 255)",
+      fontSize: 30,
+      fontWeight: "700",
+      lineHeight: 35.1562,
+      fontFamily: "Roboto",
+      textAlign: "center",
+      },
+      styleBack: {
+        width: 95,
+        height: 95,
+        position: "absolute",
+        transform: [
+          {translateX: 26},
+          {translateY: 25},
+        ],
+        shadowColor: "rgba(0,0,0,0)",
+        },
+          imageBtn: {
+            width: "30%",
+            backgroundColor: "#F6F6F6",
+            borderRadius: 10,
+            height: 30,
+            alignItems: "center",
+            marginBottom: 10,
+            justifyContent: "center",
+            marginTop: 15,
+        
+            shadowColor: "#000",
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.8,
+            shadowRadius: 2,
+            elevation: 1,
+          },
 });
