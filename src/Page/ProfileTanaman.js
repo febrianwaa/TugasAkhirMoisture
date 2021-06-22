@@ -9,7 +9,9 @@ export default class ProfileTanaman extends Component {
         super(props);
         // Don't call this.setState() here!
         this.state = { 
-            data: [{}]
+            data: [{}],
+            name:"",
+            image:""
         };
 
       }
@@ -66,22 +68,23 @@ export default class ProfileTanaman extends Component {
 
 
 deleteData(id){
-//   axios.delete(`http://192.168.0.11:8080/plants/deletePlants/${id}`)
-//   .then( (response) => {
-//     alert(response.data)
-//   })
-// .catch(function (error) {
-//   // handle error
-//    console.log(error);
-//   })
+  axios.delete(`http://192.168.0.11:8080/plants/deletePlants/${id}`)
+  .then( (response) => {
+    alert(response.data)
+  })
+.catch(function (error) {
+  // handle error
+   console.log(error);
+  })
 }
 
 
 
     renderItem = ({ item }) => (
-            <TouchableOpacity style={styles.cek} onPress={() => this.props.navigation.navigate("glosarium")}>
+            <View style={{marginTop:5,justifyContent: "center", alignItems: "center"}}>
+            <TouchableOpacity style={styles.cek} onPress={() => this.props.navigation.navigate("DetailTanaman")}>
 
-              <Image style={{width:AVATAR_SIZE,height:AVATAR_SIZE,borderRadius: AVATAR_SIZE, marginRight:SPACING /2}}
+              <Image style={{width:AVATAR_SIZE,height:AVATAR_SIZE,borderRadius: 20, marginRight:SPACING /2}}
                 source={{uri:`http://192.168.0.11:8080/plants/image/${item.image}`}}
               />
 
@@ -90,22 +93,37 @@ deleteData(id){
             <Text style={styles.title}>{item.name}</Text>
             {/* <Text style={styles.title}>Status :{JSON.stringify(item.plantsDetail)}</Text> */}
             </View>
-            <TouchableOpacity style={{marginLeft:220,marginTop:20}} onPress={() => this.deleteData(item.id)}>
+
+            
+            <TouchableOpacity style={{justifyContent:"center",marginLeft:150, position:'relative'}} onPress={() => this.deleteData(item.id)}>
             <Image style={{height: 30, width: 30}} source={require("../Images/delete.png")}/>
             </TouchableOpacity>
+            
+
 
             </TouchableOpacity>
+            </View>
     )
 
     render() {
         return (
-            <SafeAreaView style={styles.container}>
+          <View style={{flex:1,backgroundColor: '#31A05F'}}>
+               
+               <View style={styles.styleBACK}>
+        <TouchableOpacity style={styles.styleBack} onPress={() => this.props.navigation.navigate("Main Menu")}>
+        <Image style={{height: 30, width: 30}} source={require("../Images/back.png")}/>
+        </TouchableOpacity>
+        </View>
+
+         <View style={styles.logoContainer}>      
+        <Text style={styles.logoText}>My Plant</Text>
+        </View>
                 <FlatList
                 data={this.state.data}
                 renderItem={this.renderItem}
                 keyExtractor={item => item.id}
               />
-            </SafeAreaView>
+            </View>
           );
     }
 }
@@ -145,19 +163,61 @@ const styles = StyleSheet.create({
         flexDirection:"row",
         backgroundColor:'rgba(255,255,255,0.8)',
         borderRadius:20, 
-        padding:15, 
+        padding:10, 
         marginBottom:20,
         shadowColor:"#000",
-        shadowOffset:{
-            width:0,
-            height:10
-            },
-        shadowOpacity:.3,
         shadowRadius:20,
-      
-        
-        
-        
-        
-      }
+        width:350
+        },
+        styleBACK: {
+          width: 140,
+          height: 54,
+          position: "absolute",
+          
+          left: 28,
+          top: 50,
+          transform: [
+            {translateX: 0},
+            {translateY: 0},
+          ],
+          shadowColor: "rgba(0,0,0,0)",
+          color: "white",
+         // color: "rgb(255, 255, 255)",
+          fontSize: 30,
+          fontWeight: "700",
+          lineHeight: 35.1562,
+          fontFamily: "Roboto",
+          textAlign: "center",
+          },
+          styleBack: {
+            width: 95,
+            height: 95,
+            position: "absolute",
+            transform: [
+              {translateX: 26},
+              {translateY: 25},
+            ],
+            shadowColor: "rgba(0,0,0,0)",
+            },
+            logoText: {
+              marginRight:50,
+              shadowColor: "rgba(0,0,0,0)",
+              color: "white",
+             // color: "rgb(255, 255, 255)",
+              fontSize: 35,
+              fontWeight: "700",
+              fontFamily: "Roboto",
+              },
+            logoContainer: {
+              alignItems: "center",
+              marginBottom: 20,
+              marginTop: 120,
+             marginRight:140
+            },
+            
   });
+
+
+
+
+  // ,justifyContent: "center", alignItems: "center",

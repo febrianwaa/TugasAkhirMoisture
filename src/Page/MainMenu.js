@@ -33,6 +33,8 @@ export class MainMenu extends Component {
         </TouchableOpacity>
 				</View>	
 
+        <TouchableOpacity style={styles.loginBtn} onPress={()=>this.props.navigation.navigate("glosarium")}><Text style={{ color: "#31A05F", fontSize: 20, fontWeight: "bold" }}>Glosarium</Text></TouchableOpacity>
+
 
         {/* <TouchableOpacity style={styles.box} onPress={() => this.props.navigation.navigate("Profile Tanaman")}>
           <Text style={styles.boxLabel}>Profile Tanaman</Text>
@@ -167,5 +169,20 @@ const styles = StyleSheet.create({
             ],
             shadowColor: "rgba(0,0,0,0)",
             },
-     
+            loginBtn: {
+              width: "70%",
+              backgroundColor: "#F6F6F6",
+              borderRadius: 10,
+              height: 50,
+              alignItems: "center",
+              marginBottom: 10,
+              justifyContent: "center",
+              marginTop: 250,
+          
+              shadowColor: "#000",
+              shadowOffset: { width: 0, height: 2 },
+              shadowOpacity: 0.8,
+              shadowRadius: 2,
+              elevation: 1,
+            },
 });

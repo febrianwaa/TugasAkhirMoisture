@@ -25,7 +25,7 @@ export default class Setting extends Component {
 
     getData =()=>{  
         //Make a request for a user with a given ID
-        axios.get(`http://192.168.0.16:8080/user/`)
+        axios.get(`http://192.168.0.11:8080/user/`)
         .then( (response) => {
        //   console.log(response.data)
           let data=response.data;   
@@ -54,17 +54,22 @@ export default class Setting extends Component {
     }
 
     renderItem = ({ item }) => (
-        <View style = {{borderWidth:5, borderColor:"black"}}>
+      <View style={{justifyContent: "center",alignItems: "center",}}>
+      
+      
+      
+        <View style = {{backgroundColor:'rgba(255,255,255,0.8)', borderRadius: 20, padding : 15,width:350}}>
             <Text style={styles.title}>Username : {item.username}</Text>
             <Text style={styles.title}>Email :{item.email}</Text>
             <Text style={styles.title}>Password :{item.password}</Text>
-           
-            <TouchableOpacity onPress={()=>{this.props.navigation.replace("UpdateUser",item)}} style={styles.button}><Text style={styles.title}>Update</Text></TouchableOpacity>
-            <TouchableOpacity onPress={()=>{Alert.alert('Anda yakin?','Tindakan ini akan menghilangkan data',
-            [{text: 'TIDAK', onPress: () => console.warn('NO Pressed'), style: 'cancel'},
-            {text: 'YA', onPress: () => this.deleteData(item.id)},])}} style={styles.button}>
-              <Text style={styles.title}>Delete</Text>
+               
+            <TouchableOpacity onPress={()=>{this.props.navigation.replace("UpdateUser",item)}} style={styles.update}><Text style={{color: "white", fontSize: 20, fontWeight: "bold" }}>Update</Text></TouchableOpacity>
+            <TouchableOpacity onPress={()=>{Alert.alert('Are you sure?','Tindakan ini akan menghilangkan data',
+            [{text: 'NO', onPress: () => console.warn('NO Pressed'), style: 'cancel'},
+            {text: 'YES', onPress: () => this.deleteData(item.id)},])}} style={styles.delete}>
+              <Text style={{color: "white", fontSize: 20, fontWeight: "bold"}}>Delete</Text>
             </TouchableOpacity>
+            </View>
         </View>
     )
 
@@ -72,16 +77,25 @@ export default class Setting extends Component {
 
     render() {
         return (
-            // <SafeAreaView style={styles.container}>
-            //   <FlatList
-            //     data={this.state.data}
-            //     renderItem={this.renderItem}
-            //     keyExtractor={item => item.id}
-            //   />
-            // </SafeAreaView>
-<View style={styles.footer}>
-<Text style={styles.title}>Delete</Text>
-</View>
+          <View style={{flex:1,backgroundColor: '#31A05F'}}>
+               
+               <View style={styles.styleBACK}>
+        <TouchableOpacity style={styles.styleBack} onPress={() => this.props.navigation.navigate("Main Menu")}>
+        <Image style={{height: 30, width: 30}} source={require("../Images/back.png")}/>
+        </TouchableOpacity>
+        </View>
+
+         <View style={styles.logoContainer}>      
+        <Text style={styles.logoText}>Welcome</Text>
+        </View>
+            
+              <FlatList
+                data={this.state.data}
+                renderItem={this.renderItem}
+                keyExtractor={item => item.id}
+              />
+            </View>
+
 
           );
     }
@@ -107,13 +121,83 @@ const styles = StyleSheet.create({
       backgroundColor: "#DDDDDD",
       padding: 10,
     },
-    footer: {
-      flex: 1,
-      backgroundColor: '#fff',
-      borderTopLeftRadius: 50,
-      borderTopRightRadius: 50,
-      paddingVertical: 50,
-      paddingHorizontal: 30
-  },
+ 
+  styleBACK: {
+    width: 140,
+    height: 54,
+    position: "absolute",
+    
+    left: 28,
+    top: 50,
+    transform: [
+      {translateX: 0},
+      {translateY: 0},
+    ],
+    shadowColor: "rgba(0,0,0,0)",
+    color: "white",
+   // color: "rgb(255, 255, 255)",
+    fontSize: 30,
+    fontWeight: "700",
+    lineHeight: 35.1562,
+    fontFamily: "Roboto",
+    textAlign: "center",
+    },
+    styleBack: {
+      width: 95,
+      height: 95,
+      position: "absolute",
+      transform: [
+        {translateX: 26},
+        {translateY: 25},
+      ],
+      shadowColor: "rgba(0,0,0,0)",
+      },
+      logoText: {
+        marginRight:50,
+        shadowColor: "rgba(0,0,0,0)",
+        color: "white",
+       // color: "rgb(255, 255, 255)",
+        fontSize: 35,
+        fontWeight: "700",
+        fontFamily: "Roboto",
+        },
+      logoContainer: {
+        alignItems: "center",
+        marginBottom: 20,
+        marginTop: 120,
+       marginRight:125
+      },
+      update: {
+        width: "100%",
+        fontSize: 16,
+        borderRadius: 10,
+        height: 50,
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 10,
+        backgroundColor: "#17A351",
+        marginBottom: 10,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.8,
+        shadowRadius: 2,
+        elevation: 1,
+      },
+      delete: {
+        width: "100%",
+        fontSize: 16,
+        borderRadius: 10,
+        height: 50,
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 3,
+        backgroundColor: "red",
+        marginBottom: 10,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.8,
+        shadowRadius: 2,
+        elevation: 1,
+      }
   });
   

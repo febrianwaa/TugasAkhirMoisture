@@ -16,7 +16,7 @@ export class UpdateUser extends Component {
 
     handleUpdate(){
         console.log(this.state)
-        axios.put(`http://192.168.43.231:8080/user/updateUser/${this.state.id}`,this.state)
+        axios.put(`http://192.168.0.11:8080/user/updateUser/${this.state.id}`,this.state)
         .then( (response) => {
         //  console.log(response)
           alert(response.data)
