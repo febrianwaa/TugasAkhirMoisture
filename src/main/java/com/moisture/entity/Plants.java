@@ -26,7 +26,7 @@ public class Plants {
     private long id;
     private String name;
     private String image;
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "plantsDetail", referencedColumnName = "id")
     private PlantsDetails plantsDetail;
     

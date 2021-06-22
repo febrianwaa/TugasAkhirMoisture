@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import com.moisture.entity.Glosarium;
 import com.moisture.repository.GlosariumRepository;
 
@@ -29,9 +30,15 @@ public class GlosariumController {
 	}
 	
 	@GetMapping("/")
-	private List<Glosarium> getAll(){
+	private List<Glosarium> findAllByName(){
 		return glosariumRepo.findAll();
 		
+	}
+	
+	
+	@GetMapping("/searchby/{type}/{value}")
+	public List<Glosarium> getSearchBy(@PathVariable("type")String type, @PathVariable("value") String value) {
+		return glosariumRepo.findBySearchBy(type, value);
 	}
 	
 	

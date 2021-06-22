@@ -27,8 +27,11 @@ public class Glosarium {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String plantName;
+	private String name;
+    private String image;
+    private String origin;
     private String humidity;
+    private String temp;
    
   
 	
