@@ -44,6 +44,15 @@ class Login extends Component {
     // console.log(this.state);
     return (
       <View style={styles.container}>
+
+        <View style={styles.styleBACK}>
+        <TouchableOpacity style={styles.styleBack} onPress={() => this.props.navigation.navigate("Home")}>
+        <Image style={{height: 30, width: 30}} source={require("../Images/back.png")}/>
+        </TouchableOpacity>
+        </View>
+
+
+
         <Text style={styles.text}>Username</Text>
         <View style={styles.inputContainer}>
           <TextInput
@@ -191,4 +200,34 @@ const styles = StyleSheet.create({
   logoContainer: {
     alignItems: "center",
   },
+  styleBACK: {
+    width: 140,
+    height: 54,
+    position: "absolute",
+    
+    left: 28,
+    top: 50,
+    transform: [
+      {translateX: 0},
+      {translateY: 0},
+    ],
+    shadowColor: "rgba(0,0,0,0)",
+    color: "white",
+   // color: "rgb(255, 255, 255)",
+    fontSize: 30,
+    fontWeight: "700",
+    lineHeight: 35.1562,
+    fontFamily: "Roboto",
+    textAlign: "center",
+    },
+    styleBack: {
+      width: 95,
+      height: 95,
+      position: "absolute",
+      transform: [
+        {translateX: 26},
+        {translateY: 25},
+      ],
+      shadowColor: "rgba(0,0,0,0)",
+      },
 });

@@ -15,9 +15,9 @@ export class MainMenu extends Component {
         </TouchableOpacity>
         </View>
 
-        <View style={{alignItems: "center",justifyContent: "center",  width: "120%", marginBottom: 10, marginTop:50}}>
+        <View style={{alignItems: "center",justifyContent: "center",  width: "120%", marginBottom: 10, marginTop:47}}>
       	<TouchableOpacity style={styles.style15} onPress={() => this.props.navigation.navigate("Setting")}>
-        <Image style={{height: 150, width: 150}} source={require("../Images/Profile.png")}/>
+        <Image style={{height: 155, width: 150}} source={require("../Images/Profile.png")}/>
         </TouchableOpacity>
 				</View>	
 
@@ -28,13 +28,18 @@ export class MainMenu extends Component {
 				</View>	
 
         <View style={{alignItems: "center",justifyContent: "center",  width: "120%", marginBottom: 10, marginTop:-5}}>
-      	<TouchableOpacity style={styles.style15} onPress={() => this.props.navigation.navigate("Login")}>
-        <Image style={{height: 145, width: 150}} source={require("../Images/Logout.png")}/>
+      	<TouchableOpacity style={styles.style15} onPress={() => this.props.navigation.navigate("glosarium")}>
+        <Image style={{height: 153, width: 150}} source={require("../Images/Glosarium.png")}/>
         </TouchableOpacity>
 				</View>	
 
-        <TouchableOpacity style={styles.loginBtn} onPress={()=>this.props.navigation.navigate("glosarium")}><Text style={{ color: "#31A05F", fontSize: 20, fontWeight: "bold" }}>Glosarium</Text></TouchableOpacity>
+        <View style={{justifyContent: "center",  width: "87%", marginBottom: 10, marginTop:-235, marginLeft:220}}>
+      	<TouchableOpacity style={styles.style15} onPress={() => this.props.navigation.navigate("Login")}>
+        <Image  source={require("../Images/Logout.png")}/>
+        </TouchableOpacity>
+				</View>	
 
+        
 
         {/* <TouchableOpacity style={styles.box} onPress={() => this.props.navigation.navigate("Profile Tanaman")}>
           <Text style={styles.boxLabel}>Profile Tanaman</Text>
@@ -140,7 +145,7 @@ const styles = StyleSheet.create({
         opacity: 0.45,
       },
       style15: {
-        width: 95,
+        width: 120,
         height: 99,
         position: "absolute",
         transform: [

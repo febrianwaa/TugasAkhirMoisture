@@ -10,8 +10,10 @@ export default class ProfileTanaman extends Component {
         // Don't call this.setState() here!
         this.state = { 
             data: [{}],
-            name:"",
-            image:""
+           value:"",
+           name:"",
+           image:"",
+           plantsDetail: {},
         };
 
       }
