@@ -30,7 +30,7 @@ public class Plants {
     @JoinColumn(name = "plantsDetail", referencedColumnName = "id")
     private PlantsDetails plantsDetail;
     
-//    @ManyToOne(cascade = CascadeType.MERGE)
-//   	@JoinColumn(name="idUser", referencedColumnName = "id")
-//   	private User idUser;
+    @ManyToOne(cascade = CascadeType.MERGE)
+   	@JoinColumn(name="idUser", referencedColumnName = "id")
+   	private User idUser;
 }

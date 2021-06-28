@@ -18,6 +18,9 @@ public interface PlantsRepository extends JpaRepository<Plants, Long>{
 	Plants findSoilMoiture(String id);
 	
 
-	@Query(value="SELECT plants.id, plants.image,plants.name FROM plants JOIN plant_detail ON plants.plants_detail_id=plant_detail.id_arduino JOIN user ON plants.id_user=user.id WHERE id_user= ?1", nativeQuery = true)
+//	@Query(value="SELECT plants.id, plants.image,plants.name FROM plants JOIN plant_detail ON plants.plants_detail_id=plant_detail.id_arduino JOIN user ON plants.id_user=user.id WHERE id_user= ?1", nativeQuery = true)
+//	List<Plants> findAllById(Long id);
+	
+	@Query(value="SELECT * FROM `plants` WHERE id_user= ?1", nativeQuery = true)
 	List<Plants> findAllById(Long id);
 }
