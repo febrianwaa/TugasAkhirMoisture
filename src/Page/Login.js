@@ -15,7 +15,7 @@ class Login extends Component {
 
   handleLogin() {
     axios
-      .get(`http://192.168.0.11:8080/user/login/`, {
+      .get(`http://192.168.0.15:8080/user/login/`, {
         params: {
           username: this.state.username,
           password: this.state.password,
@@ -28,6 +28,8 @@ class Login extends Component {
           this.props.UserAction("isLogin", true);
           this.props.UserAction("username", response.data.username);
           this.props.UserAction("id", response.data.id);
+          this.props.UserAction("email", response.data.id);
+          this.props.UserAction("password", response.data.id);
           alert("Login Berhasil");
           this.props.navigation.replace("Main Menu");
         } else {

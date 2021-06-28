@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, TouchableOpacity, TextInput, Alert, Image } from 'react-native';
 import axios from 'axios'
+import { connect } from "react-redux";
 
 
-export default class ProfileTanaman extends Component {
+class ProfileTanaman extends Component {
 
     constructor(props) {
         super(props);
@@ -24,7 +25,7 @@ export default class ProfileTanaman extends Component {
 
     getData =()=>{  
         //Make a request for a user with a given ID
-        axios.get(`http://192.168.0.11:8080/plants/`)
+        axios.get(`http://192.168.0.15:8080/plants/${this.props.dataUser.id}`)
         .then( (response) => {
        //   console.log(response.data)
           let data=response.data;   
@@ -70,7 +71,7 @@ export default class ProfileTanaman extends Component {
 
 
 deleteData(id){
-  axios.delete(`http://192.168.0.11:8080/plants/deletePlants/${id}`)
+  axios.delete(`http://192.168.0.15:8080/plants/deletePlants/${id}`)
   .then( (response) => {
     alert(response.data)
   })
@@ -84,10 +85,10 @@ deleteData(id){
 
     renderItem = ({ item }) => (
             <View style={{marginTop:5,justifyContent: "center", alignItems: "center"}}>
-            <TouchableOpacity style={styles.cek} onPress={() => this.props.navigation.navigate("DetailTanaman")}>
+            <TouchableOpacity style={styles.cek} onPress={() => this.props.navigation.navigate("DetailTanaman", item)}>
 
               <Image style={{width:AVATAR_SIZE,height:AVATAR_SIZE,borderRadius: 20, marginRight:SPACING /2}}
-                source={{uri:`http://192.168.0.11:8080/plants/image/${item.image}`}}
+                source={{uri:`http://192.168.0.15:8080/plants/image/${item.image}`}}
               />
 
 
@@ -129,6 +130,22 @@ deleteData(id){
           );
     }
 }
+
+const mapStateToProps = (state) => ({
+  dataUsername: state.UserReducer.username,
+  dataPassword: state.UserReducer.password,
+  dataUser: state.UserReducer,
+});
+
+const mapDispatchToProps = {
+
+};
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileTanaman);
+
+
 const AVATAR_SIZE = 70;
 const SPACING = 20;
 const styles = StyleSheet.create({

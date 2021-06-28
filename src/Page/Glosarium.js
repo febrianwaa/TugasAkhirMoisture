@@ -22,7 +22,7 @@ export default class Glosarium extends Component {
 
     getData =()=>{  
         //Make a request for a user with a given ID
-        axios.get(`http://192.168.0.11:8080/glosarium/`)
+        axios.get(`http://192.168.0.15:8080/glosarium/`)
         .then( (response) => {
        //   console.log(response.data)
           let data=response.data;   
@@ -43,7 +43,7 @@ export default class Glosarium extends Component {
     getDataCari =()=>{
       // console.log(this.state)
       //Make a request for a user with a given ID
-      axios.get(`http://192.168.0.11:8080/glosarium/searchby/${this.state.type}/${this.state.value}`)
+      axios.get(`http://192.168.0.15:8080/glosarium/searchby/${this.state.type}/${this.state.value}`)
       .then( (response) => {
         // console.log(response.data")
         let data=response.data;   

@@ -24,18 +24,18 @@ class App extends Component {
       <Provider store={store}>
         <NavigationContainer>
           <Stack.Navigator>
-            {/* <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
+            <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
             <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
-            <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/> */}
-            {/* <Stack.Screen name="Main Menu" component={MainMenu} options={{ headerShown: false }} /> */}
-            {/* <Stack.Screen name="TambahkanTanaman" component={TambahkanTanaman} options={{ headerShown: false }}/>
+            <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/> 
+            <Stack.Screen name="Main Menu" component={MainMenu} options={{ headerShown: false }} />
+            <Stack.Screen name="TambahkanTanaman" component={TambahkanTanaman} options={{ headerShown: false }}/>
             <Stack.Screen name="Setting" component={Setting} options={{ headerShown: false }} />
-            <Stack.Screen name="UpdateUser" component={UpdateUser} options={{ headerShown: false }}/> */}
-             {/* <Stack.Screen name="ProfileTanaman" component={ProfileTanaman} options={{ headerShown: false }}/> */}
+            <Stack.Screen name="UpdateUser" component={UpdateUser} options={{ headerShown: false }}/>
+            <Stack.Screen name="ProfileTanaman" component={ProfileTanaman} options={{ headerShown: false }}/>
             <Stack.Screen name="DetailTanaman" component={DetailTanaman} options={{ headerShown: false }}/>
            
 
-          {/* <Stack.Screen name="glosarium" component={Glosarium} options={{ headerShown: false }}/> */}
+          <Stack.Screen name="glosarium" component={Glosarium} options={{ headerShown: false }}/>
           </Stack.Navigator>
         </NavigationContainer>
       </Provider>

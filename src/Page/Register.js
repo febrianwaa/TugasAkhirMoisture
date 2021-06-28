@@ -15,9 +15,10 @@ class Register extends Component {
     };
   }
 
+
   handleLogin() {
     axios
-      .post(`http://192.168.0.11:8080/user/`, this.state)
+      .post(`http://192.168.0.15:8080/user/`, this.state)
       .then((response) => {
         alert(JSON.stringify(response.data));
         this.props.navigation.replace("Home");

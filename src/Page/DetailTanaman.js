@@ -103,11 +103,11 @@ render() {
         </View>
 
          <View style={styles.logoContainer}>      
-        <Text style={styles.logoText}>Lidah Buaya</Text>
+        <Text style={styles.logoText}>{this.props.route.params.name}</Text>
         </View>
 
         <View style={{alignItems: "center",  width: "40%", marginBottom: 10, marginTop:0, marginLeft:133}}>
-          <Image style={{height: 300, width: 200}} source={require("../Images/TESTING.jpg")}/>
+          <Image style={{height: 300, width: 200}} source={{uri:`http://192.168.0.15:8080/plants/image/${this.props.route.params.image}`}}/>
         </View>
 
         <View style = {{flexDirection:'column',  backgroundColor:'rgba(255,255,255,1)',borderRadius:13, padding:200, marginBottom:SPACING,
@@ -126,38 +126,55 @@ render() {
                             /> */}
                             {/* <View style = {{backgroundColor : '#FCF4A3', borderRadius: 12, padding : 15}}> */}
                              
-                            <View style={styles.cek2}  >
+                            {/* <View style={styles.cek2}  >
                             <Image style={{width:60,height:70,borderRadius: 20, marginRight:SPACING /2,alignSelf:"center"}}
                               source={require("../Images/termometer.png")}/>
                               <View style ={{flexDirection:"column",alignSelf:"center"}}>
                                 <Text>Temp : {this.state.name}%</Text>
                                 </View>
-                            </View>
+                            </View> */}
                              
-                             
-                             <View style={styles.cek}  >
-                                <Image style={{width:60,height:70,borderRadius: 20, marginRight:SPACING /2,alignSelf:"center"}}
-                              source={require("../Images/water.png")}/>
-                              <View style ={{flexDirection:"column",alignSelf:"center"}}>
-                                <Text>Humidity : {this.state.name}%</Text>
+                             <View style={styles.cek}>
+                             <TouchableOpacity onPress={() => this.props.navigation.navigate("")}>
+                             <Image style={{width:70,height:70, marginRight:SPACING /2, marginLeft:5,}}
+                              source={require("../Images/w2.png")}/>
+                              </TouchableOpacity>
+                              <View style ={{  textAlign:"center", }}>
+                                <Text  style={{ fontSize: 20,  marginTop: -55, marginLeft :-200, alignSelf:"center" }}>Pump Water</Text>
                                 {/* <Text>Status : {JSON.stringify(item.plantsDetail)}</Text> */}
                           </View>
                             </View>
 
-                            <View style={styles.cek1}  >
+
+
+
+
+                             <View style={styles.cek1}  >
+                                {/* <Image style={{width:60,height:70,borderRadius: 20, marginRight:SPACING /2,alignSelf:"center"}}
+                              source={require("../Images/water.png")}/> */}
+                              <View style ={{ fontSize: 35, height:50,marginLeft:-265,marginTop:20, textAlign:"center", alignSelf:"center"}}>
+                                <Text style ={{  fontSize: 20 }}>Humidity : {this.props.route.params.plantsDetail.soil_moisture}%</Text>
+                                {/* <Text>Status : {JSON.stringify(item.plantsDetail)}</Text> */}
+                          </View>
+                            </View>
+
+
+
+
+                            {/* <View style={styles.cek1}  >
                             <Image style={{width:60,height:70,borderRadius: 20, marginRight:SPACING /2,alignSelf:"center"}}
                               source={require("../Images/sun.png")}/>
                               <View style ={{flexDirection:"column",alignSelf:"center"}}>
                                 <Text>Light : {this.state.name}%</Text>
                                 </View>
-                            </View>
+                            </View> */}
 
 
 
 
 
                             <View style={{marginTop:-150}}>
-                            <Image style={{width:470,height:470,borderRadius: 20, marginLeft:-140,marginTop:-330}}
+                            <Image style={{width:470,height:470,borderRadius: 20, marginLeft:-140,marginTop:-250}}
                               source={require("../Images/LOGOTANEMAN.png")}/>
                          {/* </TouchableOpacity> */}
                             </View>
@@ -277,20 +294,20 @@ const styles = StyleSheet.create({
             cek:{
               flexDirection:"column",
               backgroundColor:"rgb(211, 250, 250)",
-              borderRadius:20, 
+              borderRadius:50, 
               padding:10, 
               marginBottom:20,
-              width:130,
-              marginTop:-10,
+              width:500,
+              marginTop:-100,
               marginLeft:-180
               },
               cek1:{
                 flexDirection:"column",
-                backgroundColor: "rgb(255, 153, 1)",
-                borderRadius:20, 
+                backgroundColor: "#B48642",
+                borderRadius:50, 
                 padding:10, 
                 marginBottom:20,
-                width:130,
+                width:500,
                 marginTop:-10,
                 marginLeft:-180
                 },

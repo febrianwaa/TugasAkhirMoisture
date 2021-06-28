@@ -31,7 +31,7 @@ class TambahkanTanaman extends Component {
     this.getPermission();
 
     axios
-      .get(`http://192.168.0.11:8080/detail/`)
+      .get(`http://192.168.0.15:8080/detail/`)
       .then((response) => {
         this.setState({ dataAlat: response.data });
       })
@@ -77,7 +77,7 @@ class TambahkanTanaman extends Component {
     });
 
     axios
-      .post("http://192.168.0.11:8080/plants/", formData, {
+      .post("http://192.168.0.15:8080/plants/", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -107,7 +107,7 @@ class TambahkanTanaman extends Component {
 
 
   render() {
-    console.log(this.state.plantsDetail);
+    console.log(this.props.dataUser);
     return (
       <View style={styles.container}>
 
@@ -209,6 +209,7 @@ class TambahkanTanaman extends Component {
 const mapStateToProps = (state) => ({
   dataUsername: state.UserReducer.username,
   dataId: state.UserReducer.id,
+  dataUser: state.UserReducer,
 });
 
 const mapDispatchToProps = {};

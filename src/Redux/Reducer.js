@@ -3,6 +3,8 @@ import { combineReducers } from "redux";
 const userData = {
   id: 0,
   username: "",
+  email:"",
+  password: "",
   isLogin: false,
 };
 
